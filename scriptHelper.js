@@ -44,19 +44,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     if (validateInput(pilot) === "Empty") {
         alert("All fields required");
-        preventDefault();
+        //preventDefault();
     }
     else if (validateInput(copilot) === "") {
         alert("All fields required");
-        preventDefault();
+        //preventDefault();
     }
     else if (validateInput(fuelLevel) === "") {
         alert("All fields required");
-        preventDefault();
+        //preventDefault();
     }
     else if (validateInput(cargoLevel) === "") {
         alert("All fields required");
-        preventDefault();
+        //preventDefault();
     }
     else{
         pilotStatus.innerHTML=`Pilot ${pilot} is ready for launch.`;
@@ -83,11 +83,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    }
    if (readyFuel === true && readyMass === true) {
         launchStatus.innerHTML="Shuttle ready for launch!";
-        launchStatus.color.innerHTML ="green";
+        launchStatus.style.color.innerHTML ="green";
         
    }else {
         launchStatus.innerHTML="Shuttle not ready for launch!";
-        launchStatus.color.innerHTML ="red";
+        launchStatus.style.color.innerHTML ="red";
    }
 }
 

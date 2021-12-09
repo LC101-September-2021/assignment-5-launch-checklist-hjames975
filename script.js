@@ -1,5 +1,7 @@
 // Write your JavaScript code here!
 
+const { myFetch } = require("./scriptHelper");
+
 //const { formSubmission } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
@@ -42,6 +44,8 @@ window.addEventListener("load", function() {
        console.log(listedPlanets);
    }).then(function () {
        console.log(listedPlanets);
+    //    let planet = pickPlanet(listedPlanets)
+    //     addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image)
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-   })
+   });
 });
