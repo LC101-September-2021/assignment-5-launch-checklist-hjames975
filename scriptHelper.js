@@ -31,41 +31,63 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let ready = true;
+    let readyFuel = true;
+    let readyMass = true;
 
-    let pilotStatus = document.getElementbyId("pilotStatus");
-    let copilotStatus = document.getElementbyId("copilotStatus");
-    let fuelStatus = document.getElementbyId("fuelStatus");
-    let cargoStatus = document.getElementbyId("cargoStatus");
-    let launchStatus = document.getElementbyId("launchStatus");
+    let pilotStatus = document.querySelector("pilotStatus");
+    let copilotStatus = document.querySelector("copilotStatus");
+    let fuelStatus = document.querySelector("fuelStatus");
+    let cargoStatus = document.querySelector("cargoStatus");
+    //let launchStatus = document.getElementbyId("launchStatus");
     list.style.visibility = "visibility";
     //validate input
 
-    if (validateInput(pilot.value) === "Empty") {
-        window.alert("All fields required");
-        event.preventDefault();
+    if (validateInput(pilot.value) === "") {
+        alert("All fields required");
+        preventDefault();
+    }
+    else if (validateInput(copilot) === "") {
+        alert("All fields required");
+        preventDefault();
+    }
+    else if (validateInput(fuelLevel) === "") {
+        alert("All fields required");
+        preventDefault();
+    }
+    else if (validateInput(cargoLevel) === "") {
+        alert("All fields required");
+        preventDefault();
+    }
+    else{
+        pilotStatus.innerHTML=`Pilot ${pilot} is ready for launch.`;
+        copilotStatus.innerHTML=`Co-Pilot ${copilot} is ready for launch.`;
+        list.style.visibility="visible";
     }
 
+
    if (fuelLevel < 10000) {
-       let ready = true;
-       let faultyItems= visible;
-       let fuelStatus = console.log("There is not enough fuel for the journey.");
-       let launchStatus = console.log("Shuttle not ready for laucnch");
-       element.getElementbyId("launchStatus").style.color = red;
+       alert("There is not enough fuel for the journey.");
+       fuelLevel.innerHTML = `Shuttle not ready for laucnch`;
+       
        ready = false;
+   }else {
+       readyFuel = true;
    }
    if (cargoLevel > 10000) {
-        let ready = true;
-        let faultyItems= visible;
-        let fuelStatus = "There is too much mass for the shuttle to take off.";
-        let launchStatus = "Shuttle not ready for laucnch";
-        element.getElementbyId("launchStatus").style.color = red;
-        ready = false;
-   }
-   if (ready === true) {
-        let launchStatus = console.log("Shuttle is ready for launch");
-        document.getElementbyId("launchStatus").style.color = green;
+        alert("There is too much mass for the shuttle to take off.");
+        cargoLevel.innerHTML = `Shuttle not ready for laucnch`;
         
+        readyMass = false;
+   }else {
+       readyMass = true;
+   }
+   if (readyFuel === true && readyMass === true) {
+        launchStatus.innerHTML="Shuttle ready for launch!";
+        launchStatus.color.innerHTML ="green";
+        
+   }else {
+        launchStatus.innerHTML="Shuttle not ready for launch!";
+        launchStatus.color.innerHTML ="red";
    }
 }
 
