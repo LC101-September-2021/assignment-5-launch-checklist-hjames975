@@ -21,10 +21,10 @@ function validateInput(testInput) {
     if (testInput === ""){
         validated = "Empty";
     }
-    else if (isNan(testInput)) {
+    else if (isNaN(testInput)) {
         validated = "Not a Number";
     } 
-    else if (!isNan(testInput)){
+    else if (!isNaN(testInput)){
         validated = "Is a Number";
     }
    return validated;
@@ -42,7 +42,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     list.style.visibility = "visibility";
     //validate input
 
-    if (validateInput(pilot.value) === "") {
+    if (validateInput(pilot) === "Empty") {
         alert("All fields required");
         preventDefault();
     }
