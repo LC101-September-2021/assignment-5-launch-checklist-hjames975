@@ -39,60 +39,57 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let copilotStatus = document.getElementById("copilotStatus");
     let fuelStatus = document.getElementById("fuelStatus");
     let cargoStatus = document.getElementById("cargoStatus");
-    //let launchStatus = document.getElementbyId("launchStatus");
-    //list.style.visibility = "visibility";
-    //validate input
 
+    //validate string
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         alert("All fields required");
-        //preventDefault();
     }
+
+    //validate number
     else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
     alert("Enter appropriate value in each field");
-}
-    else{
+    }   else {
         list.style.visibility="visible";
         pilotStatus.innerHTML=`Pilot ${pilot} is ready for launch.`;
         copilotStatus.innerHTML=`Co-Pilot ${copilot} is ready for launch.`;
         let launchStatus = document.getElementById("launchStatus");
-        // let fuelStatus = document.getElementById("fuelStatus");
-        // let cargoStatus = document.getElementById("cargoStatus");
-    //both fail
-   if (fuelLevel <= 10000 && cargoLevel >= 10000) {
-    list.style.visibility="visible";
-       launchStatus.innerHTML = `Shuttle not ready for launch`;
-       launchStatus.style.color ="red";
-       ready = false;
-   }
+}
+        
+
    //both pass
-   else if (fuelLevel >= 10000 && cargoLevel <= 10000) {
-    list.style.visibility="visible";
+   if (fuelLevel >= 10000 && cargoLevel <= 10000) {
+        list.style.visibility="visible";
         launchStatus.innerHTML="Shuttle ready for launch!";
         launchStatus.style.color ="green";
         fuelStatus.innerHTML=`Fuel level  is ready for launch.`;
-        cargoStatus.innerHTML=`Cago Mass  is ready for launch.`;
-            
-}
-//fuel fail; cargo pass
-else if (fuelLevel <= 10000 && cargoLevel <= 10000) {
-    //fuelStatus.innerHTML = `Not enough fuel`;
-    list.style.visibility="visible";
-       launchStatus.innerHTML = `Shuttle not ready for launch`;
-       launchStatus.style.color ="red";
-       fuelStatus.innerHTML=`Fuel level  is too low for launch.`;
-       cargoStatus.innerHTML=`Cargo mass  is low enough for launch.`
-}
-//fuel pass; cargo fail
-else if (fuelLevel >= 10000 && cargoLevel >= 10000) {
-    //cargoStatus.innerHTML = `Too much cargo`;
-    list.style.visibility="visible";
-       launchStatus.innerHTML = `Shuttle not ready for launch`;
-       launchStatus.style.color ="red";
-       fuelStatus.innerHTML=`Fuel level  is too low for launch.`;
-       cargoStatus.innerHTML=`Cargo mass  is too heavy for launch.`;
-}
+        cargoStatus.innerHTML=`Cago Mass  is ready for launch.`;       
+    }   else {
+            list.style.visibility="visible";
+            launchStatus.innerHTML = `Shuttle not ready for launch`;
+            launchStatus.style.color ="red";
     }
+
+    //fuel fail; cargo pass
+    if (fuelLevel <= 10000 && cargoLevel <= 10000) {
+        fuelStatus.innerHTML=`Fuel level  is too low for launch.`;
+        cargoStatus.innerHTML=`Cargo mass  is low enough for launch.`
     }
+
+    //fuel pass; cargo fail
+    else if (fuelLevel >= 10000 && cargoLevel >= 10000) {
+        fuelStatus.innerHTML=`Fuel level  is too low for launch.`;
+        cargoStatus.innerHTML=`Cargo mass  is too heavy for launch.`;
+    }
+
+    //both fail
+    else if (fuelLevel <= 10000 && cargoLevel >= 10000) {
+        fuelStatus.innerHTML=`Fuel level  is too low for launch.`;
+        cargoStatus.innerHTML=`Cargo mass  is too heavy for launch.`;
+    }
+    
+}
+
+
 async function myFetch() {
     let planetsReturned;
 
