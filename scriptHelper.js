@@ -11,11 +11,11 @@ div.innerHTML = `
                     <li>Star: ${star}</li>
                     <li>Distance from Earth: ${distance}</li>
                     <li>Number of Moons: ${moons}</li>
-                    console.log(addDestinationInfo)
+                    
                 </ol>
                 <img src="${imageUrl}">
   ` 
-}
+} //console.log(addDestinationInfo)
 
 function validateInput(testInput) {
     let validated = Number(testInput);
@@ -55,7 +55,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let launchStatus = document.getElementById("launchStatus");
 
      //both pass
-    if (fuelLevel > 10000 && cargoLevel < 10000) {
+    if (fuelLevel >= 10000 && cargoLevel <= 10000) {
     list.style.visibility="visible";
     launchStatus.innerHTML="Shuttle is Ready for Launch";
     launchStatus.style.color ='rgb(65, 159, 106)';
