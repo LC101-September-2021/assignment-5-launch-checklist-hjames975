@@ -70,7 +70,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     //fuel fail; cargo pass
     if (fuelLevel <= 10000 && cargoLevel <= 10000) {
         fuelStatus.innerHTML=`Fuel level too low for launch`;
-        cargoStatus.innerHTML=`Cargo mass low enough for launch`
+        cargoStatus.innerHTML=`Cargo mass low enough for launch`;
     }
 
     //fuel pass; cargo fail
