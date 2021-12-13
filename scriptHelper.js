@@ -18,7 +18,7 @@ div.innerHTML = `
 }
 
 function validateInput(testInput) {
-    let validated = Number(testInput);
+    //let validated = Number(testInput);
     if (testInput === ""){
         return "Empty";
     }
@@ -28,7 +28,7 @@ function validateInput(testInput) {
     else if (!isNaN(validated) === false){
         return "Is a Number";
     }
-   return validated;
+   //return validated;
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
@@ -55,7 +55,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         let launchStatus = document.getElementById("launchStatus");
 
      //both pass
-    if (fuelLevel >= 10000 && cargoLevel <= 10000) {
+    if (fuelLevel > 10000 && cargoLevel < 10000) {
     list.style.visibility="visible";
     launchStatus.innerHTML="Shuttle is Ready for Launch";
     launchStatus.style.color ='rgb(65, 159, 106)';
@@ -68,19 +68,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 }
 
     //fuel fail; cargo pass
-    if (fuelLevel <= 10000 && cargoLevel <= 10000) {
+    if (fuelLevel < 10000 && cargoLevel < 10000) {
         fuelStatus.innerHTML=`Fuel level too low for launch`;
         cargoStatus.innerHTML=`Cargo mass low enough for launch`;
     }
 
     //fuel pass; cargo fail
-    else if (fuelLevel >= 10000 && cargoLevel >= 10000) {
+    else if (fuelLevel > 10000 && cargoLevel > 10000) {
         fuelStatus.innerHTML=`Fuel level high enough for launch`;
         cargoStatus.innerHTML=`Cargo mass too heavy for launch`;
     }
 
     //both fail
-    else if (fuelLevel <= 10000 && cargoLevel >= 10000) {
+    else if (fuelLevel < 10000 && cargoLevel > 10000) {
         fuelStatus.innerHTML=`Fuel level too low for launch`;
         cargoStatus.innerHTML=`Cargo mass too heavy for launch`;
     }
