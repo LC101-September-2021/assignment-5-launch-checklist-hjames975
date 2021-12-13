@@ -18,7 +18,7 @@ div.innerHTML = `
 }
 
 function validateInput(testInput) {
-    //let validated = Number(testInput);
+    let validated = Number(testInput);
     if (testInput === ""){
         return "Empty";
     }
@@ -28,7 +28,7 @@ function validateInput(testInput) {
     else if (!isNaN(validated) === false){
         return "Is a Number";
     }
-   //return validated;
+    return validated;
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
